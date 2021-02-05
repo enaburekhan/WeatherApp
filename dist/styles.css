@@ -10,3 +10,38 @@
     background: var(--mainYellow);
     color: var(--mainBlack);
   }
+
+  .card {
+    box-shadow: 0 10px 15px rgb(0, 0, 0);
+    background: var(--mainGreen);
+  }
+  .cityInput {
+    border: 0.15rem solid var(--mainBlue);
+    background: transparent !important;
+    font-size: 1.5rem;
+    color: var(--mainBlue);
+  }
+  input:focus {
+    background: transparent !important;
+  }
+  
+  .submitBtn {
+    background: var(--mainBlue);
+    border: 0.15rem solid var(--mainBlue);
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.7;
+  }
+  .submitBtn:hover {
+    opacity: 1;
+  }
+  .feedback {
+    display: none;
+  }
+  .results {
+    display: none;
+  }
+  .showItem {
+    display: block;
+  }
+  
