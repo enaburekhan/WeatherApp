@@ -1,6 +1,14 @@
 class AjaxWeather {
-    constructor() {
-      this.apiKey = "9561863653c64bc1cc99067df8019cd4";
+  constructor() {
+    this.apiKey = "9561863653c64bc1cc99067df8019cd4";
+  } 
+  async getWeather(city) {
+      const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${
+        this.apiKey
+      }&units=metric`;
+      const weatherData = await fetch(url);
+      const weather = await weatherData.json();
+      return weather;
     }
 }    
 
