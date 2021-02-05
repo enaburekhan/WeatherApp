@@ -1,3 +1,8 @@
+class AjaxWeather {
+    constructor() {
+      this.apiKey = "9561863653c64bc1cc99067df8019cd4";
+    }
+}    
 
 
 
@@ -8,6 +13,9 @@
   const cityInput = document.getElementById("cityInput");
   const feedback = document.querySelector(".feedback");  
   
+  // class
+  const ajax = new AjaxWeather();
+  const display = new Display();
   form.addEventListener("submit", event => {
     event.preventDefault();
     const city = cityInput.value;
