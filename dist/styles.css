@@ -1,0 +1,12 @@
+:root {
+    --mainBlack: #333333;
+    --mainWhite: #f5f5f5;
+    --mainYellow: #ffd166;
+    --mainGreen: #06d6a0;
+    --mainBlue: #118ab2;
+    --darkBlue: #073b4c;
+  }
+  body {
+    background: var(--mainYellow);
+    color: var(--mainBlack);
+  }
