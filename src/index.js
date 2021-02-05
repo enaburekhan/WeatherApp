@@ -10,7 +10,18 @@ class AjaxWeather {
       const weather = await weatherData.json();
       return weather;
     }
-}    
+}
+
+class RenderDisplay {
+    constructor() {
+      this.results = document.querySelector(".results");
+      this.cityName = document.getElementById("cityName");
+      this.cityCountry = document.getElementById("cityCountry");
+      this.cityIcon = document.getElementById("cityIcon");
+      this.cityTemp = document.getElementById("cityTemp");
+      this.cityHumidity = document.getElementById("cityHumidity");
+    }
+}   
 
 
 
@@ -23,7 +34,7 @@ class AjaxWeather {
   
   // class
   const ajax = new AjaxWeather();
-  const display = new Display();
+  const display = new RenderDisplay();
   form.addEventListener("submit", event => {
     event.preventDefault();
     const city = cityInput.value;
