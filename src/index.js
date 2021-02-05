@@ -1,11 +1,27 @@
-import _ from 'lodash';
-function component() {
-    const element = document.createElement('div');
+
+
+
+
+(function (){
   
-    // Lodash, now imported by this script
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+  const form = document.getElementById("wheatherForm");
+  const cityInput = document.getElementById("cityInput");
+  const feedback = document.querySelector(".feedback");  
   
-    return element;
-  }
-  
-  document.body.appendChild(component());
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    const city = cityInput.value;
+
+    if (city.length === 0) {
+      showFeedback("city value cannot be empty");
+    } else {
+      ajax.getWeather(city).then(data => {
+        if (data.message === "city not found") {
+          showFeedback("city with such name cannot be found");
+        } else {
+          display.showWeather(data);
+        }
+      });
+    }
+  });
+})();
