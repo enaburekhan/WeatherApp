@@ -19,55 +19,83 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-          <div class="col mt-5 col-md-8 mx-auto">
-            <div class="feedback alert alert-danger text-capitalize text-center">
-    
+    <div id="content">
+        <div id="main-screen">
+          <div id="logo">checkWeatherApp</div>
+  
+          <div id="weather-form">
+            <div class="form-div">
+              <input
+                type="text"
+                name="search-input"
+                id="search-input"
+                placeholder="Your city here"
+              />
+              <button id="search-btn">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-search"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                  />
+                </svg>
+              </button>
             </div>
-            <div class="card card-body">
-              <div class="card-title text-center text-capitalize">
-                <h3>search city</h3>
+            <small id="error" style="display: none;">Remember where I live</small> 
+          </div>
+        </div>
+  
+        <div id="result-screen" style="display: none">
+          <div id="result-content">
+              <button id="return-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z"/>
+                  </svg>
+                </svg>
+              </button>
+            <div id="result-summary">
+              <div class="summary-item">
+                <div id="result-temp">28°</div>
+                <div id="result-place">Lagos, NG</div>
+                <button id="convert-units-btn">C°</button>
               </div>
-              <form id="wheatherForm">
-                <div class="input-group">
-                  <input type="text" class="form-control text-capitalize cityInput" id="cityInput">
-                  <div class="input-group-append">
-                    <button type="submit" class="text-capitalize submitBtn">submit</button>
-                  </div>
+              <div id="" class="summary-item">
+                <div>
+                  <div id="result-weather">Clear Skies</div>
+                  <div id="result-weather-desc">Clear Skies</div>
                 </div>
-              </form>
-              <!--  -->
-              <div class="results text-center mt-5">
-                <h6 class="text-capitalize">city name : <span id="cityName"></span> </h6>
-                <h6 class="text-capitalize">country : <span id="cityCountry"></span> </h6>
-                <img src="#" id="cityIcon" />
-                <h6 class="text-capitalize">temperature in celsius: <span id="cityTemp"></span> <span class="m-3">
-                    <!-- 
-           https://www.iconfinder.com/icons/667368/celcius_clouds_farenheit_sunshine_temerature_thermometer_weather_icon
-           Creative Commons (Attribution 3.0 Unported);
-    https://www.iconfinder.com/bluewolfski            -->
-                    <img src="img/temp.svg" alt="">
-                  </span></h6>
-                <h6 class="text-capitalize">humidity : <span id="cityHumidity"></span><span class="m-3">
-                    <!-- 
-           https://www.iconfinder.com/icons/2682807/drop_high_humidity_percentage_precipitation_rain_weather_icon
-           Creative Commons (Attribution 3.0 Unported);
-    https://www.iconfinder.com/laurareen            -->
-    
-                    <img src="img/humidity.svg" alt="">
-    
-                  </span> </h6>
-    
+              </div>
+            </div>
+            <div id="result-details">
+              <div class="details-item">
+                <h2>Feels like</h2>
+                <p id="result-feeling">29832</p>
+              </div>
+              <div class="details-item">
+                <h2>Humidity</h2>
+                <p id="result-humidity">29832</p>
+              </div>
+              <div class="details-item">
+                <h2>Pressure</h2>
+                <p id="result-pressure">29832</p>
+              </div>
+              <div class="details-item">
+                <h2>Min temp</h2>
+                <p id="result-mintemp">29832</p>
+              </div>
+              <div class="details-item">
+                <h2>Max temp</h2>
+                <p id="result-maxtemp">29832</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    
-    
-     
-    
 
 
     

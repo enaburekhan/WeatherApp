@@ -1,80 +1,106 @@
-class AjaxWeather {
-  constructor() {
-    this.apiKey = "9561863653c64bc1cc99067df8019cd4";
-  } 
-  async getWeather(city) {
-      const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${
-        this.apiKey
-      }&units=metric`;
-      const weatherData = await fetch(url);
-      const weather = await weatherData.json();
-      return weather;
-    }
-}
+import anime from 'animejs/lib/anime.es';
 
-class RenderDisplay {
-    constructor() {
-      this.results = document.querySelector(".results");
-      this.cityName = document.getElementById("cityName");
-      this.cityCountry = document.getElementById("cityCountry");
-      this.cityIcon = document.getElementById("cityIcon");
-      this.cityTemp = document.getElementById("cityTemp");
-      this.cityHumidity = document.getElementById("cityHumidity");
-    }
+import {
+  weatherRequest,
+  inputResult,
+  getData,
+  currentUnit,
+} from './data';
 
-    showWeather(data) {
-        // console.log(data);
-        const {
-          name,
-          sys: { country },
-          main: { temp, humidity }
-        } = data;
-        const { icon } = data.weather[0];
-    
-        this.results.classList.add("showItem");
-        this.cityName.textContent = name;
-        this.cityCountry.textContent = country;
-        this.cityTemp.textContent = temp;
-        this.cityHumidity.textContent = humidity;
-        this.cityIcon.src = `http://openweathermap.org/img/w/${icon}.png`;
-      }
-}   
+import { convertTemps } from './tempConvertion';
 
+let userCity = localStorage.getItem('user_city') || undefined;
 
+let mainScreen = document.querySelector('#main-screen');
+let resultScreen = document.querySelector('#result-screen');
 
+window.addEventListener('load', (e) => {
+  //Animate main screen
+  anime({
+    targets: mainScreen,
+    opacity: [0, 1],
+    translateY: [-10, 0],
+    duration: 3000,
+  });
+});
 
-(function (){
-  
-  const form = document.getElementById("wheatherForm");
-  const cityInput = document.getElementById("cityInput");
-  const feedback = document.querySelector(".feedback");  
-  
-  // class
-  const ajax = new AjaxWeather();
-  const display = new RenderDisplay();
-  form.addEventListener("submit", event => {
-    event.preventDefault();
-    const city = cityInput.value;
+let cityInput = document.querySelector('#search-input');
+let searchBtn = document.querySelector('#search-btn');
+searchBtn.addEventListener('click', submitHandler);
 
-    if (city.length === 0) {
-      showFeedback("city value cannot be empty");
-    } else {
-      ajax.getWeather(city).then(data => {
-        if (data.message === "city not found") {
-          showFeedback("city with such name cannot be found");
-        } else {
-          display.showWeather(data);
-        }
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') submitHandler();
+});
+
+let errorMsg = document.querySelector('#error');
+
+async function submitHandler() {
+  if (validateInput()) {
+    try {
+      let fetchWeatherData = await weatherRequest(
+        cityInput.value
+      ).then((data) => inputResult(getData(data)));
+
+      let resultScreenAnimation = anime({
+        targets: resultScreen,
+        opacity: [0, 1],
+        translateY: [-10, 0],
+        duration: 3000,
+        begin: () => {
+          mainScreen.style.display = 'none';
+          resultScreen.style.display = 'block';
+        },
+      });
+    } catch (e) {
+      console.log(e);
+      errorMsg.innerText = 'No location found!';
+      anime({
+        targets: errorMsg,
+        opacity: [0, 1],
+        begin: () => {
+          errorMsg.style.display = 'block';
+        },
       });
     }
-  });
-
-  function showFeedback(text) {
-    feedback.classList.add("showItem");
-    feedback.innerHTML = `<p>${text}</p>`;
-
-    setTimeout(() => {
-      feedback.classList.remove("showItem");
-    }, 3000);
+  } else {
+    let inputAnimation = await anime({
+      targets: cityInput,
+      translateX: [-20, 0],
+    });
   }
-})();
+}
+
+function validateInput() {
+  return cityInput.value !== '';
+}
+
+//Return
+
+let returnBtn = document.querySelector('#return-btn');
+returnBtn.addEventListener('click', resetHandler);
+
+async function resetHandler() {
+  //Clean input
+  cityInput.value = '';
+  errorMsg.style.display = 'none';
+
+  let mainScreenAnimation = anime({
+    targets: mainScreen,
+    opacity: [0, 1],
+    translateY: [-10, 0],
+    duration: 3000,
+    begin: () => {
+      mainScreen.style.display = 'block';
+      resultScreen.style.display = 'none';
+    },
+  });
+}
+
+//Converting temps
+
+const convertBtn = document.querySelector('#convert-units-btn');
+convertBtn.addEventListener('click', (e) => {
+  convertTemps();
+  //Switch button text
+  convertBtn.innerText = convertBtn.innerText == 'F°' ? 'C°' : 'F°';
+});
