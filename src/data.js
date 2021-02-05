@@ -1,4 +1,4 @@
-import { API_KEY as key } from './apikey';
+// import { API_KEY as key } from './apikey';
 
 let currentUnit = 0; // 0 - Celsius 1 - Fahrenheit
 
@@ -66,9 +66,10 @@ function inputResult({
 
 //HTTPS
 async function weatherRequest(city) {
+  const apiKey = "9561863653c64bc1cc99067df8019cd4";
   try {
     let response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}`
+      `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}`
     );
     let data = await response.json();
     return data;
