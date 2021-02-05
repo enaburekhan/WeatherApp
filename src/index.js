@@ -21,6 +21,23 @@ class RenderDisplay {
       this.cityTemp = document.getElementById("cityTemp");
       this.cityHumidity = document.getElementById("cityHumidity");
     }
+
+    showWeather(data) {
+        // console.log(data);
+        const {
+          name,
+          sys: { country },
+          main: { temp, humidity }
+        } = data;
+        const { icon } = data.weather[0];
+    
+        this.results.classList.add("showItem");
+        this.cityName.textContent = name;
+        this.cityCountry.textContent = country;
+        this.cityTemp.textContent = temp;
+        this.cityHumidity.textContent = humidity;
+        this.cityIcon.src = `http://openweathermap.org/img/w/${icon}.png`;
+      }
 }   
 
 
