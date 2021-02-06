@@ -1,11 +1,9 @@
-/* eslint-disable prefer-const */
-/* eslint-disable import/no-mutable-exports */
-let currentUnit = 0; // 0 - Celsius 1 - Fahrenheit
-/* eslint-enable import/no-mutable-exports */
-/* eslint-enable prefer-const */
+export const toggleUnit = {};
+toggleUnit.currentUnit = 0;
 
 function parseTemp(temp) {
-  const parsedTemp = currentUnit === 0 ? Number(temp) - 273.1 : 1.8 * (Number(temp) - 273) + 32;
+  const parsedTemp = toggleUnit
+    .currentUnit === 0 ? Number(temp) - 273.1 : 1.8 * (Number(temp) - 273) + 32;
   return Math.round(parsedTemp * 10) / 10;
 }
 
@@ -59,16 +57,15 @@ function inputResult({
     { elementId: '#result-mintemp', value: `${minTemp}°` },
     { elementId: '#result-maxtemp', value: `${maxTemp}°` },
   ];
-  /* eslint-disable no-restricted-syntax */
-  for (const { elementId, value } of results) {
+
+  results.forEach(({ elementId, value }) => {
     document.querySelector(elementId).innerText = value;
-  }
-  /* eslint-enable no-restricted-syntax */
+  });
 }
 
 // using promise
 async function weatherRequest(city) {
-  const apiKey = 'Your API key here';
+  const apiKey = '9561863653c64bc1cc99067df8019cd4';
   try {
     const response = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}`,
@@ -81,5 +78,5 @@ async function weatherRequest(city) {
 }
 
 export {
-  weatherRequest, inputResult, getData, parseTemp, currentUnit,
+  weatherRequest, inputResult, getData, parseTemp,
 };
