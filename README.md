@@ -30,7 +30,7 @@ One can toggle between Celcius and Fahrenheit temperature by clicking on the top
 4. Distribution files can be produced using: npm run build
 5. Sign up @ openweathermap.org and add the assign key to the apikey variable in data.js
 
-## Author Details::
+## Author Details:
 
 👤 **Eric Enaburekhan**
 
