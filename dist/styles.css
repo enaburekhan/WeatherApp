@@ -26,7 +26,7 @@ body {
   font-family: 'Work Sans', sans-serif;
   font-size: 1.5em;
   background-color: var(--light);
-  color: var(--dark);
+  color: var(--darkgreen);
 }
 
 #content {
@@ -115,21 +115,6 @@ body {
 
 #search-input:focus {
   border-bottom: 2px solid var(--green);
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: var(--dark);
-  color: var(--light);
-  padding: 1em;
-  text-align: center;
-}
-
-footer p {
-  margin: 0;
 }
 
 #result-content {

@@ -64,7 +64,7 @@ function inputResult({
   }
 }
 
-//HTTPS
+//using promise
 async function weatherRequest(city) {
   const apiKey = "9561863653c64bc1cc99067df8019cd4";
   try {
