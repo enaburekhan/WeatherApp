@@ -94,6 +94,7 @@ body {
 #search-input {
   flex: 1;
   justify-self: center;
+  text-transform: capitalize;
 
   background: transparent;
   outline: 0;
