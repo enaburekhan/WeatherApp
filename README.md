@@ -1,6 +1,7 @@
 # PROJECT: WeatherApp
 
 The WeatherApp project is use for checking current weather conditions for most popular cities across the globe. It uses the openweathermap API through the given API key to collect and process data from different sources such as global and local weather models, satalites, radars and vast network of weather stations. The data is displayed in JSON format. The project also made use of the javascript animation engine called anime.js to display the receiving data from the WeatherApp API.
+One can toggle between Celcius and Fahrenheit temperature by clicking on the top left button with either the C or F symbol.
  
  ## Live Demo:
 [WeatherApp]()
