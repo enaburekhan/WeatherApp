@@ -4,7 +4,7 @@ The WeatherApp project is use for checking current weather conditions for most p
 One can toggle between Celcius and Fahrenheit temperature by clicking on the top left button with either the C or F symbol.
  
  ## Live Demo:
-[WeatherApp]()
+[WeatherApp](http://ericenaburekhan.me/WeatherApp/)
 
 ## Screenshot
 ![weatherapp](https://user-images.githubusercontent.com/51296741/107104308-5093b900-6821-11eb-8c5d-7392e228bd13.png)
