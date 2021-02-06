@@ -1,24 +1,18 @@
-// import anime from 'animejs/lib/anime.es';
-// import anime from 'animejs/lib/anime.es.js';
-// import { default as anime } from '../node_modules/animejs/lib/anime.es.js';
-import anime from 'animejs/lib/anime.es.js';
+import anime from 'animejs/lib/anime.es';
 
 import {
   weatherRequest,
   inputResult,
   getData,
-  currentUnit,
 } from './data';
 
-import { convertTemps } from './tempConvertion';
+import convertTemps from './tempConvertion';
 
-let userCity = localStorage.getItem('user_city') || undefined;
+const mainScreen = document.querySelector('#main-screen');
+const resultScreen = document.querySelector('#result-screen');
 
-let mainScreen = document.querySelector('#main-screen');
-let resultScreen = document.querySelector('#result-screen');
-
-window.addEventListener('load', (e) => {
-  //Animate main screen
+window.addEventListener('load', () => {
+  // Animate main screen
   anime({
     targets: mainScreen,
     opacity: [0, 1],
@@ -27,24 +21,20 @@ window.addEventListener('load', (e) => {
   });
 });
 
-let cityInput = document.querySelector('#search-input');
-let searchBtn = document.querySelector('#search-btn');
-searchBtn.addEventListener('click', submitHandler);
+const errorMsg = document.querySelector('#error');
+const cityInput = document.querySelector('#search-input');
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') submitHandler();
-});
-
-let errorMsg = document.querySelector('#error');
-
+function validateInput() {
+  return cityInput.value !== '';
+}
 async function submitHandler() {
   if (validateInput()) {
     try {
-      let fetchWeatherData = await weatherRequest(
-        cityInput.value
+      await weatherRequest(
+        cityInput.value,
       ).then((data) => inputResult(getData(data)));
 
-      let resultScreenAnimation = anime({
+      anime({
         targets: resultScreen,
         opacity: [0, 1],
         translateY: [-10, 0],
@@ -55,7 +45,6 @@ async function submitHandler() {
         },
       });
     } catch (e) {
-      console.log(e);
       errorMsg.innerText = 'No location found!';
       anime({
         targets: errorMsg,
@@ -66,28 +55,30 @@ async function submitHandler() {
       });
     }
   } else {
-    let inputAnimation = await anime({
+    await anime({
       targets: cityInput,
       translateX: [-20, 0],
     });
   }
 }
 
-function validateInput() {
-  return cityInput.value !== '';
-}
+const searchBtn = document.querySelector('#search-btn');
+searchBtn.addEventListener('click', submitHandler);
 
-//Return
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') submitHandler();
+});
 
-let returnBtn = document.querySelector('#return-btn');
-returnBtn.addEventListener('click', resetHandler);
+// Return
+
+const returnBtn = document.querySelector('#return-btn');
 
 async function resetHandler() {
-  //Clean input
+  // Clean input
   cityInput.value = '';
   errorMsg.style.display = 'none';
 
-  let mainScreenAnimation = anime({
+  anime({
     targets: mainScreen,
     opacity: [0, 1],
     translateY: [-10, 0],
@@ -98,12 +89,13 @@ async function resetHandler() {
     },
   });
 }
+returnBtn.addEventListener('click', resetHandler);
 
-//Converting temps
+// Converting temps
 
 const convertBtn = document.querySelector('#convert-units-btn');
-convertBtn.addEventListener('click', (e) => {
+convertBtn.addEventListener('click', () => {
   convertTemps();
-  //Switch button text
-  convertBtn.innerText = convertBtn.innerText == 'F°' ? 'C°' : 'F°';
+  // Switch button text
+  convertBtn.innerText = convertBtn.innerText === 'F°' ? 'C°' : 'F°';
 });

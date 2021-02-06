@@ -1,20 +1,21 @@
-// import { API_KEY as key } from './apikey';
-
+/* eslint-disable prefer-const */
+/* eslint-disable import/no-mutable-exports */
 let currentUnit = 0; // 0 - Celsius 1 - Fahrenheit
+/* eslint-enable import/no-mutable-exports */
+/* eslint-enable prefer-const */
 
 function parseTemp(temp) {
-  let parsedTemp =
-    currentUnit === 0 ? Number(temp) - 273.1 : 1.8 * (Number(temp) - 273) + 32;
+  const parsedTemp = currentUnit === 0 ? Number(temp) - 273.1 : 1.8 * (Number(temp) - 273) + 32;
   return Math.round(parsedTemp * 10) / 10;
 }
 
 function getData(weatherData) {
-  let city = weatherData.name;
-  let country = weatherData.sys.country;
-  let place = `${city}, ${country}`;
-  let { main: weatherTitle, description: weatherDesc } = weatherData.weather[0];
-  let details = weatherData.main;
-  let {
+  const city = weatherData.name;
+  const { country } = weatherData.sys;
+  const place = `${city}, ${country}`;
+  const { main: weatherTitle, description: weatherDesc } = weatherData.weather[0];
+  const details = weatherData.main;
+  const {
     feels_like: feeling,
     humidity,
     pressure,
@@ -47,7 +48,7 @@ function inputResult({
   maxTemp,
   minTemp,
 }) {
-  let results = [
+  const results = [
     { elementId: '#result-temp', value: `${temp}°` },
     { elementId: '#result-place', value: place },
     { elementId: '#result-weather', value: weatherTitle },
@@ -58,24 +59,27 @@ function inputResult({
     { elementId: '#result-mintemp', value: `${minTemp}°` },
     { elementId: '#result-maxtemp', value: `${maxTemp}°` },
   ];
-
-  for (let { elementId, value } of results) {
+  /* eslint-disable no-restricted-syntax */
+  for (const { elementId, value } of results) {
     document.querySelector(elementId).innerText = value;
   }
+  /* eslint-enable no-restricted-syntax */
 }
 
-//using promise
+// using promise
 async function weatherRequest(city) {
-  const apiKey = "9561863653c64bc1cc99067df8019cd4";
+  const apiKey = '9561863653c64bc1cc99067df8019cd4';
   try {
-    let response = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}`
+    const response = await fetch(
+      `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}`,
     );
-    let data = await response.json();
+    const data = await response.json();
     return data;
   } catch (e) {
-    console.log(e);
+    return (e);
   }
 }
 
-export { weatherRequest, inputResult, getData, parseTemp, currentUnit };
+export {
+  weatherRequest, inputResult, getData, parseTemp, currentUnit,
+};

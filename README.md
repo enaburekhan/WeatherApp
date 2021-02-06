@@ -3,7 +3,7 @@
 The WeatherApp project is use for checking current weather conditions for most popular cities across the globe. It uses the openweathermap API through the given API key to collect and process data from different sources such as global and local weather models, satalites, radars and vast network of weather stations. The data is displayed in JSON format. The project also made use of the javascript animation engine called anime.js to display the receiving data from the WeatherApp API.
  
  ## Live Demo:
-[Todo-List]()
+[WeatherApp]()
 
 ## Screenshot
 ![weatherapp](https://user-images.githubusercontent.com/51296741/107104308-5093b900-6821-11eb-8c5d-7392e228bd13.png))
@@ -27,7 +27,7 @@ The WeatherApp project is use for checking current weather conditions for most p
 2. Cd into the cloned directory
 3. Install the required dependencies by using: npm install
 4. Distribution files can be produced using: npm run build
-5. Sign up @ openweathermap.org and add assign the key to the apikey variable in data.js
+5. Sign up @ openweathermap.org and add the assign key to the apikey variable in data.js
 
 ## Author Details::
 
