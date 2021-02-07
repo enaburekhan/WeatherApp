@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WeatherApp</title>
+  <!-- bootstrap css -->
+  <link
+   rel="stylesheet"
+   href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+   integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+   crossorigin="anonymous"/>
+  <script src="https://kit.fontawesome.com/688a35b1eb.js" crossorigin="anonymous"></script>
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <!-- main css -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="content">
+        <div id="main-screen">
+          <div id="logo">checkWeatherCondition</div>
+  
+          <div id="weather-form">
+            <div class="form-div">
+              <input
+                type="text"
+                name="search-input"
+                id="search-input"
+                placeholder="Your city here"
+              />
+              <button id="search-btn">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-search"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <small id="error" style="display: none;">Remember where I live</small> 
+          </div>
+        </div>
+  
+        <div id="result-screen" style="display: none">
+          <div id="result-content">
+              <button id="return-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z"/>
+                  </svg>
+                </svg>
+              </button>
+            <div id="result-summary">
+              <div class="summary-item">
+                <div id="result-temp">28°</div>
+                <div id="result-place">Lagos, NG</div>
+                <button id="convert-units-btn">C°</button>
+              </div>
+              <div id="" class="summary-item">
+                <div>
+                  <div id="result-weather">Clear Skies</div>
+                  <div id="result-weather-desc">Clear Skies</div>
+                </div>
+              </div>
+            </div>
+            <div id="result-details">
+              <div class="details-item">
+                <h2>Feels like</h2>
+                <p id="result-feeling">29832</p>
+              </div>
+              <div class="details-item">
+                <h2>Humidity</h2>
+                <p id="result-humidity">29832</p>
+              </div>
+              <div class="details-item">
+                <h2>Pressure</h2>
+                <p id="result-pressure">29832</p>
+              </div>
+              <div class="details-item">
+                <h2>Min temp</h2>
+                <p id="result-mintemp">29832</p>
+              </div>
+              <div class="details-item">
+                <h2>Max temp</h2>
+                <p id="result-maxtemp">29832</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    
+
+
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous">
+  </script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous">
+  </script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous">
+  </script>
+    
+  <!-- main.css -->
+  <script src="main.js"></script>  
+</body>
+</html>
