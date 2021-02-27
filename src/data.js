@@ -65,7 +65,7 @@ function inputResult({
 
 // using promise
 async function weatherRequest(city) {
-  const apiKey = 'Enter your Api-key here';
+  const apiKey = '9561863653c64bc1cc99067df8019cd4';
   try {
     const response = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}`,
